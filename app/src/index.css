@@ -1,0 +1,159 @@
+:root {
+  --brand: #111111;
+  --accent: #FFD400;
+  --accent-dark: #E6BF00;
+  --bg: #f6f6f4;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --border: #e5e5e5;
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 8px 24px rgba(0, 0, 0, .06);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .75rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.app-header img { height: 36px; width: auto; display: block; }
+
+.nav-link {
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background .2s, color .2s;
+}
+.nav-link:hover { background: var(--bg); color: var(--text); }
+.nav-link.active { background: var(--brand); color: var(--accent); }
+
+/* ---------- Card, input, botones ---------- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .7rem .9rem;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color .2s, box-shadow .2s;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.input:disabled { background: var(--bg); color: var(--muted); cursor: not-allowed; }
+
+.btn {
+  padding: .65rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s, background .2s, opacity .2s;
+}
+.btn:hover:not(:disabled) { transform: translateY(-1px); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-accent { background: var(--accent); color: #111; }
+.btn-accent:hover:not(:disabled) { background: var(--accent-dark); }
+.btn-ghost { background: var(--surface); border-color: var(--border); color: var(--text); }
+.btn-lg { padding: .85rem 1.25rem; font-size: 1rem; }
+
+/* ---------- Tag (listado y detalle) ---------- */
+.tag {
+  display: inline-block;
+  padding: .15rem .6rem;
+  border-radius: 999px;
+  background: #111;
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+/* ---------- Loaders ---------- */
+.progress { height: 3px; position: relative; overflow: hidden; }
+.progress::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 40%;
+  background: var(--accent);
+  animation: slide 1s ease-in-out infinite;
+}
+@keyframes slide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(250%); }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent-dark);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Estado vacío o error ---------- */
+.empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.empty-state__message { margin: 0; color: var(--muted); }
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .progress::after, .spinner { animation-duration: 2s; }
+  .btn { transition: none; }
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .card { box-shadow: none; border: 1px solid #ccc; }
+  a { color: #000; text-decoration: none; }
+}
