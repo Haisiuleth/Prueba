@@ -4,7 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 import { fetchProducts, HttpError } from '../api/products';
 import type { Product } from '../types/product';
 import { formatPrice, thumb } from '../utils/format';
-import '../css/products.css';
+import '../css/Products.css';
 
 //Cantidad de Skus a mostrar
 const PAGE_SIZE = 12;

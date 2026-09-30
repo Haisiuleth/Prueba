@@ -3,7 +3,7 @@ import type { FormEvent, ChangeEvent, ReactNode } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { ME, UPDATE_USER } from '../api/user';
 import type { MeData } from '../api/user';
-import '../css/profile.css';
+import '../css/Profile.css';
 
 type FormState = { name: string; lastName: string; email: string };
 type Errors = Partial<Record<keyof FormState, string>>;
