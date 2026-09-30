@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 import logo from '../assets/logo.png';
-import '../css/login.css';
+import '../css/Login.css';
 
 export default function Login() {
   const { login } = useAuth();
