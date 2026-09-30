@@ -34,7 +34,7 @@ jobs:
 
       - run: npm run build
         env:
-          VITE_API_URL: https://prueba-backend-1eui.onrender.com/graphql
+          VITE_API_URL: https://prueba-backend-1eui.onrender.com
 
       - uses: actions/upload-pages-artifact@v3
         with:
